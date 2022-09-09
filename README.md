@@ -1,0 +1,1 @@
+# SOLACE_JMS_Docker_Java
