@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  app:
+    image: 'sarychev90/solace:produser'
+    build:
+      context: ../.
+      dockerfile: ./solaceJmsProduser/Dockerfile
+    ports:
+      - 9999:8090
+      

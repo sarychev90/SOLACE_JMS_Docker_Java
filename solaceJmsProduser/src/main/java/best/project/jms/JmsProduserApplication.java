@@ -1,0 +1,13 @@
+package best.project.jms;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class JmsProduserApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(JmsProduserApplication.class, args);
+	}
+
+}

@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  consumer:
+    image: 'sarychev90/solace:consumer'
+    build:
+       context: .
+       dockerfile: ./solaceJmsConsumer/Dockerfile
+    ports:
+      - 9070:8070
+    container_name: consumer
+    depends_on:
+      - produser
+  produser:
+    image: 'sarychev90/solace:produser'
+    build:
+       context: .
+       dockerfile: ./solaceJmsProduser/Dockerfile
+    ports:
+      - 9090:8090
+    container_name: produser
+    depends_on:
+      - solace
+  solace:
+    image: 'solace/solace-pubsub-standard:latest'
+    container_name: solace
+    shm_size: '2gb'
+    ports:
+      - 8080:8080
+      - 55555:55555
+      - 8008:8008
+      - 1884:1883
+      - 8000:8000
+      - 5672:5672
+      - 9000:9000
+      - 2222:2222
+    environment:
+      - username_admin_globalaccesslevel=admin
+      - username_admin_password=admin
+
+
+     

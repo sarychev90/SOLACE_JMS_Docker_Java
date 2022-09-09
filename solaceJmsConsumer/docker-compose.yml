@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  app:
+    image: 'sarychev90/solace:consumer'
+    build:
+      context: ../.
+      dockerfile: ./solaceJmsConsumer/Dockerfile
+    ports:
+      - 9991:8070
+      
