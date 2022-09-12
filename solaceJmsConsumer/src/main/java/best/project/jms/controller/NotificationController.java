@@ -30,7 +30,7 @@ public class NotificationController {
 	@ResponseStatus(code = HttpStatus.OK)
 	public Notification getNotification() {
 		Notification notification = messageService.receiveNotification();
-		LOG.log(Level.INFO, notification.toString());
+		LOG.log(Level.INFO, "get notification {0}", notification.toString());
 		return notification;
 	}
 }

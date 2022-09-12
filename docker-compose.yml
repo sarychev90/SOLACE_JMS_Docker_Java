@@ -1,24 +1,44 @@
 version: '3.7'
 
 services:
-  consumer:
+  subscriber1:
     image: 'sarychev90/solace:consumer'
     build:
        context: .
        dockerfile: ./solaceJmsConsumer/Dockerfile
     ports:
-      - 9070:8070
-    container_name: consumer
+      - 9071:8070
+    container_name: subscriber1
     depends_on:
-      - produser
-  produser:
+      - publisher
+  subscriber2:
+    image: 'sarychev90/solace:consumer'
+    build:
+       context: .
+       dockerfile: ./solaceJmsConsumer/Dockerfile
+    ports:
+      - 9072:8070
+    container_name: subscriber2
+    depends_on:
+      - publisher
+  subscriber3:
+    image: 'sarychev90/solace:consumer'
+    build:
+       context: .
+       dockerfile: ./solaceJmsConsumer/Dockerfile
+    ports:
+      - 9073:8070
+    container_name: subscriber3 
+    depends_on:
+      - publisher
+  publisher:
     image: 'sarychev90/solace:produser'
     build:
        context: .
        dockerfile: ./solaceJmsProduser/Dockerfile
     ports:
       - 9090:8090
-    container_name: produser
+    container_name: publisher
     depends_on:
       - solace
   solace:
